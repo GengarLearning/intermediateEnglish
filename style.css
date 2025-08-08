@@ -107,8 +107,13 @@ h1 {
     margin-top: 5px;
 }
 
-.review-correct-answer {
+.correct-answer-text {
     color: #27ae60;
+    font-weight: bold;
+}
+
+.wrong-answer-text {
+    color: #c0392b;
     font-weight: bold;
 }
 
