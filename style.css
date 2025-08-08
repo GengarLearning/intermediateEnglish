@@ -5,8 +5,8 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    min-height: 100vh;
     overflow-y: auto;
 }
 
@@ -16,7 +16,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     width: 90%;
-    max-width: 650px;
+    max-width: 850px;
     text-align: center;
 }
 
@@ -82,9 +82,19 @@ h1 {
     display: none;
 }
 
-/* Review styles */
-.review-item {
+/* Review layout */
+#review-wrapper {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
     text-align: left;
+}
+
+.review-column {
+    flex: 1;
+}
+
+.review-item {
     padding: 12px;
     border-bottom: 1px solid #ddd;
 }
@@ -102,9 +112,34 @@ h1 {
     font-weight: bold;
 }
 
+/* Footer note */
+.quiz-footer {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #555;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background: #f8f8f8;
+    border-radius: 0 0 15px 15px;
+}
+
+.quiz-footer strong {
+    color: #2193b0;
+}
+
+@media (max-width: 700px) {
+    #review-wrapper {
+        flex-direction: column;
+    }
+}
+
 @media (max-width: 500px) {
     .option {
         font-size: 14px;
         padding: 10px;
+    }
+
+    .quiz-footer {
+        font-size: 12px;
     }
 }
