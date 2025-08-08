@@ -32,7 +32,8 @@ const optionsContainer = document.getElementById("options-container");
 const nextBtn = document.getElementById("next-btn");
 const resultBox = document.getElementById("result-box");
 const scoreText = document.getElementById("score-text");
-const reviewContainer = document.getElementById("review-container");
+const reviewLeft = document.getElementById("review-container-left");
+const reviewRight = document.getElementById("review-container-right");
 const restartBtn = document.getElementById("restart-btn");
 
 function loadQuestion() {
@@ -77,7 +78,9 @@ function showResults() {
     document.getElementById("quiz-box").classList.add("hidden");
     resultBox.classList.remove("hidden");
     scoreText.textContent = `You got ${score} correct and ${questions.length - score} wrong.`;
-    reviewContainer.innerHTML = "";
+
+    reviewLeft.innerHTML = "";
+    reviewRight.innerHTML = "";
 
     questions.forEach((q, index) => {
         const reviewItem = document.createElement("div");
@@ -103,7 +106,13 @@ function showResults() {
         reviewItem.appendChild(questionEl);
         reviewItem.appendChild(yourAnswer);
         reviewItem.appendChild(correctAnswer);
-        reviewContainer.appendChild(reviewItem);
+
+        // Put first 9 in left column, rest in right column
+        if (index < 9) {
+            reviewLeft.appendChild(reviewItem);
+        } else {
+            reviewRight.appendChild(reviewItem);
+        }
     });
 }
 
