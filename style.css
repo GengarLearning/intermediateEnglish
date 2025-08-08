@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.quiz-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 650px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+#question-number {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#options-container {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.option {
+    background: #f0f0f0;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.option:hover {
+    background: #e0e0e0;
+}
+
+.option.selected {
+    border-color: #2193b0;
+    background: #d0f0ff;
+}
+
+.correct {
+    background: #c8f7c5 !important;
+    border-color: #27ae60 !important;
+}
+
+.wrong {
+    background: #f7c5c5 !important;
+    border-color: #c0392b !important;
+}
+
+#next-btn, #restart-btn {
+    margin-top: 20px;
+    background: #2193b0;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#next-btn:hover, #restart-btn:hover {
+    background: #176a85;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Review styles */
+.review-item {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.review-question {
+    font-weight: bold;
+}
+
+.review-your-answer {
+    margin-top: 5px;
+}
+
+.review-correct-answer {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+@media (max-width: 500px) {
+    .option {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
