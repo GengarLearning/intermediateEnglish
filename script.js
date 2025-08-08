@@ -59,14 +59,14 @@ function selectOption(optionElement, index) {
 
 nextBtn.addEventListener("click", () => {
     if (selectedOption === null) return;
-    
+
     userAnswers.push(selectedOption);
-    
+
     if (selectedOption === questions[currentQuestion].answer) {
         score++;
     }
     currentQuestion++;
-    
+
     if (currentQuestion < questions.length) {
         loadQuestion();
     } else {
@@ -94,21 +94,16 @@ function showResults() {
         yourAnswer.classList.add("review-your-answer");
 
         if (userAnswers[index] === q.answer) {
-            yourAnswer.innerHTML = `✅ Your answer: <strong>${q.options[userAnswers[index]]}</strong>`;
+            yourAnswer.innerHTML = `✅ <span class="correct-answer-text">Your answer: ${q.options[userAnswers[index]]}</span>`;
         } else {
-            yourAnswer.innerHTML = `❌ Your answer: <strong>${q.options[userAnswers[index]] || "No answer"}</strong>`;
+            yourAnswer.innerHTML = `❌ <span class="wrong-answer-text">Your answer: ${q.options[userAnswers[index]]}</span><br>
+                                     ✅ <span class="correct-answer-text">Correct answer: ${q.options[q.answer]}</span>`;
         }
-
-        const correctAnswer = document.createElement("div");
-        correctAnswer.classList.add("review-correct-answer");
-        correctAnswer.textContent = `Correct answer: ${q.options[q.answer]}`;
 
         reviewItem.appendChild(questionEl);
         reviewItem.appendChild(yourAnswer);
-        reviewItem.appendChild(correctAnswer);
 
-        // Put first 9 in left column, rest in right column
-        if (index < 9) {
+        if (index < 10) {
             reviewLeft.appendChild(reviewItem);
         } else {
             reviewRight.appendChild(reviewItem);
@@ -119,9 +114,10 @@ function showResults() {
 restartBtn.addEventListener("click", () => {
     currentQuestion = 0;
     score = 0;
+    selectedOption = null;
     userAnswers = [];
-    document.getElementById("quiz-box").classList.remove("hidden");
     resultBox.classList.add("hidden");
+    document.getElementById("quiz-box").classList.remove("hidden");
     loadQuestion();
 });
 
